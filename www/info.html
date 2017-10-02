@@ -1,0 +1,84 @@
+<div class="main">
+  <div id="logo" class="text-center">
+<a href="http://nodezoo.com" class="logo"><img src="/images/nodezoo.png"></a>
+</div>
+  <div class="container" style="margin-top: 2%;">
+
+<div class="col-md-12">
+  <div class="col-md-8">
+{{#if mod}}
+{{#with mod}}
+
+  {{#if npm}}
+  {{#with npm}}
+<div id="result" class="info-result">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-4 text-left">
+        <a href="{{giturl}}" class="logo"><img src="/images/npm-small.png"></a>
+        <h3 class="infoname">{{ name }}</h3>
+      </div>
+      <div class="col-xs-6 text-right">
+        <span class="infoversion">Version: {{version}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+  </div>
+
+
+</div>
+</div>
+  {{/with}}
+  {{/if}}
+
+  {{#if no_npm}}
+  {{> loading}}
+  {{/if}}
+
+
+  {{#if github}}
+  {{#with github}}
+<div id="result" class="info-result">
+<div class="panel panel-info">
+<div class="panel-heading">
+<div class="row">
+  <div class="col-xs-6 text-left">
+    <a href="{{repo}}" class="logo"><img src="/images/github-small.png"></a>
+    <h3 class="infoname">{{ owner }}</h3>
+  </div>
+  <div class="col-xs-6 text-right">
+    <div class="col-xs-4 text-left">
+      <span class="infotext"><img src="/images/star.png">{{stars}}</span>
+    </div>
+    <div class="col-xs-4 text-center">
+      <span class="infotext"><img src="/images/watch.png">{{watches}}</span>
+    </div>
+    <div class="col-xs-4 text-right">
+      <span class="infotext"><img src="/images/fork.png">{{forks}}</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="panel-body">
+<h5>Last Updated: {{ last }} </h5>
+</div>
+</div>
+</div>
+
+
+
+
+  {{/with}}
+  {{/if}}
+
+{{/with}}
+{{else}}
+  {{> loading}}
+{{/if}}
+
+</div>
+</div>
+</div>
+</div>
