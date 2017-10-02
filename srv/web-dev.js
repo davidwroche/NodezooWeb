@@ -11,12 +11,12 @@ var Seneca = require('seneca')
 
 // Build the frontend server using the hapi framework.
 var init_hapi = require('../web.js')
-
+var browser = require('../node_modules/seneca-browser/browser.js')
 
 Seneca({tag: 'web', legacy: {transport: false}})
   .test('print')
 
-  .use('browser')
+  .use(browser)
   .listen({type:'browser', pin:'role:web'})
 
   .use('seneca-repl', {port:10010})

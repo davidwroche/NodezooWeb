@@ -21,16 +21,27 @@
   .gold{
     color: #72860F !important;
   }
+  .input-group{
+    padding-left: 2% !important;
+    padding-right: 2% !important;
+  }
 
 
 
   a {
-      color: #571B34 !important;
+      color: #72860F !important;
       text-decoration: none !important;
   }
   .infoname{
     color: #571B34 !important;
     font-size: 15px !important;
+    text-shadow: 0px 0px 1px #777778;
+     font-weight: 700;
+     color: #777778 !important;
+     transition: all ease-in-out 1s;
+  }
+  .infoname:hover{
+    color: #268EC4 !important;
   }
   .infoversion{
     font-size: 12px !important;
@@ -56,12 +67,19 @@
   }
 
   a {
-      color: #571B34 !important;
+      color: #72860F !important;
       text-decoration: none !important;
   }
   .infoname{
     color: #571B34 !important;
     font-size: 19px !important;
+    text-shadow: 0px 0px 1px #777778;
+     font-weight: 700;
+     color: #777778 !important;
+     transition: all ease-in-out 1s;
+  }
+  .infoname:hover{
+    color: #268EC4 !important;
   }
   .infoversion{
     font-size: 12px !important;
@@ -71,6 +89,10 @@
     color: #777778;
     padding-bottom: 25px;
     text-align: center !important;
+  }
+  .input-group{
+    padding-left: 2% !important;
+    padding-right: 2% !important;
   }
 }
 
@@ -101,21 +123,32 @@
 
 
   a {
-      color: #571B34 !important;
+      color: #72860F !important;
       text-decoration: none !important;
   }
   .infoname{
     color: #571B34 !important;
     font-size: 15px !important;
+    text-shadow: 0px 0px 1px #777778;
+     font-weight: 700;
+     color: #777778 !important;
+     transition: all ease-in-out 1s;
+  }
+  .infoname:hover{
+    color: #268EC4 !important;
   }
   .infoversion{
     font-size: 12px !important;
     color:  #72860F !important;
   }
+  .input-group{
+    padding-left: 2% !important;
+    padding-right: 2% !important;
+  }
 }
 
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 600px) {
   .infotext{
     font-size: 17px;
     color: #72860F !important;
@@ -137,15 +170,25 @@
     color: #72860F !important;
   }
   a {
-      color: #571B34 !important;
+      color: #72860F !important;
       text-decoration: none !important;
   }
   .infoname{
-    color: #571B34 !important;
     font-size: 25px !important;
+    text-shadow: 0px 0px 1px #777778;
+    font-weight: 700;
+    color: #777778 !important;
+    transition: all ease-in-out 1s;
+  }
+  .infoname:hover{
+    color: #268EC4 !important;
   }
   .infoversion{
     font-size: 17px !important;
     color:  #72860F !important;
+  }
+  .input-group{
+    padding-left: 20% !important;
+    padding-right: 20% !important;
   }
 }

@@ -4,8 +4,8 @@
   <!-- Latest compiled and minified CSS -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.min.css">
-  <link rel="stylesheet" type="text/css" href="css/media-queries.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/media-queries.css">
   <link rel="shortcut icon" type="image/png" href="/images/favicon.ico"/>
   <title>Nodezoo-Live</title>
 </head>
@@ -14,25 +14,19 @@
   <div class="container overlord">
     <!-- Start of Search Vue Instance -->
     <div id="search">
-      <span v-cloak>
-        <span v-if="layout1">
-          <button class="btn btn-info btn-lg top-corner" v-on:click="layout">
+      <button class="btn btn-info btn-lg search-corner" id="searchButton" v-on:click="searchLayout" @mouseover="fadeInfo" @mouseleave="unfadeInfo">
+        <span class="glyphicon glyphicon-search search-menu spin-menu fa-5x"></span>
+  </button>
+          <button class="btn btn-info btn-lg info-corner" id="infoButton" v-on:click="infoLayout" @mouseover="fadeSearch" @mouseleave="unfadeSearch">
             <span class="glyphicon glyphicon-info-sign spin-menu fa-5x"></span>
       </button>
-      </span>
-      <span v-else>
-          <button class="btn btn-info btn-lg top-corner" v-on:click="revertLayout">
-            <span class="glyphicon glyphicon-search search-menu spin-menu fa-5x"></span>
-      </button>
-      </span>
-      </span>
 
       <div class="container">
         <div class="row">
           <div id="logo" class="text-center">
             <a href="#" class="logo"><img src="images/nodezoo.png"></a>
             <p v-if="layout1">Search for <a href="http://nodejs.org">Node.js</a> modules.</p>
-            <p v-else="layout1" v-cloak>Manually inject entries <span class="gold">using the info service<span></p>
+            <p v-else="layout1" v-cloak>Manually inject entries using the info service</p>
           </div>
         </div>
       </div>
@@ -41,10 +35,10 @@
         <div class="container">
           <div class="form-group">
             <div class="input-group">
-              <input id="1" class="form-control" type="text" name="search" list="suggestlist" v-on:keyup.13="search" v-model="query" v-on:click="clear" placeholder="Search..." autocomplete="off" required/>
+              <input id="1" class="form-control input-lg" type="text" name="search" list="suggestlist" v-on:keyup.13="search" v-model="query" v-on:click="clear" placeholder="Search..." autocomplete="off" required/>
               <datalist id="suggestlist"></datalist>
               <span class="input-group-btn">
-    <button type="submit" class="btn btn-success" v-on:click="search">
+    <button type="submit" class="btn btn-success btn-lg" v-on:click="search">
     <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Search
     </button>
     </span>
@@ -59,6 +53,7 @@
   <!-- Start of Results Vue Instance -->
   <div id="results" v-cloak v-show="layout2">
     <div class="container" style="margin-top: 2%;">
+      <div id="resultssection">
       <div class="col-md-12">
           <div class="col-md-8">
             <div v-show="matches">
@@ -71,12 +66,15 @@
                 <div class="panel-heading">
                   <div class="row">
                     <div class="col-xs-6 text-left">
+                      <a :href="item.npmurl" class="logo"><img src="images/npm-small.png"></a>
+                      <a :href="item.giturl" class="logo"><img src="images/github-small.png"></a>
                       <a :href="item.namelink"><h3 class="infoname">{{ item.name }}</h3></a>
                     </div>
                     <div class="col-xs-6 text-right">
-                      <span v-on:click="moduleInfo(item.name)"><img src="images/info.png"></span>
-                      <a :href="item.npmurl" class="logo"><img src="images/npm-small.png"></a>
-                      <a :href="item.giturl" class="logo"><img src="images/github-small.png"></a>
+                      <a v-on:click="moduleInfo(item.name)" class="btn btn-sq-lg info-more">
+                          <i class="glyphicon glyphicon-info-sign"></i><br/>
+                            Check module<br>info here
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -101,6 +99,7 @@
           </div>
         </div>
       </div>
+    </div>
 
     </div>
     <footer class="footer">
@@ -121,9 +120,9 @@
             <div class="container">
               <div class="form-group">
                 <div class="input-group">
-                  <input id="1" class="form-control" type="text" v-model="name" v-on:keyup.13="getInfo" placeholder="Inject..." autocomplete="off" required/>
+                  <input id="1" class="form-control input-lg" type="text" v-model="name" v-on:keyup.13="getInfo" placeholder="Inject..." autocomplete="off" required/>
                   <span class="input-group-btn">
-  <button type="submit" class="btn btn-success" v-on:click="getInfo">
+  <button type="submit" class="btn btn-success btn-lg" v-on:click="getInfo">
   <i class="glyphicon glyphicon-info-sign smaller" aria-hidden="true"></i> Info
   </button>
   </span>
@@ -132,6 +131,7 @@
             </div>
           </div>
           <div class="container" style="margin-top: 2%;">
+            <div id="inforesults">
             <div class="col-md-12">
               <div class="col-md-8">
                 <div v-show="error">
@@ -195,6 +195,7 @@
                 </div>
               </div>
             </div>
+          </div>
           </div>
           <footer class="footer">
             <div class="container">

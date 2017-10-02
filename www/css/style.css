@@ -17,6 +17,10 @@ html {
   margin: 0px;
   padding: 0px;
 }
+.input-group{
+  padding-left: 20% !important;
+  padding-right: 20% !important;
+}
 
 * {
   -webkit-border-radius: 1px !important;
@@ -80,6 +84,8 @@ html {
 
 .btn-success {
   background-color: #268EC4 !important;
+  border-color: #FFFFFF !important;
+  border-radius: 0px 10px 10px 0px !important;
 }
 
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active {
@@ -136,8 +142,8 @@ li {
   color: #c126da;
   background-color: #F6F6F6;
   border-bottom: 0px;
-  border-color: #bce8f1;
-  font-family: cinzel_decorativeregular;
+  border-color: #72860F !important;
+  font: cinzel_decorativeregular;
 }
 
 .col-xs-6 .right-icons {
@@ -164,7 +170,8 @@ li {
 }
 
 .panel-info:hover{
-  border-color: #42D1E7;
+  border-color: #72860F !important;
+
 }
 
 .gold{
@@ -183,16 +190,41 @@ a {
    opacity: 0
  }
 
- .top-corner{
+ .search-corner{
+   margin: 0px;
    background-color: white !important;
-   border: 0px;
-   border-radius: 50% !important;
    width: 4.0em;
+   float:left;
+   border-width: 3px;
+   border-color: #f4d52e !important;
    height: 4.0em;
    outline:none !important;
    /*-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);*/
  }
+ .info-more{
+   background-color: white;
+   border: 2px;
+   border-color: gold !important;
+   border-radius: 10px 10px 10px 10px !important;
+ }
+ .info-more:hover{
+   background-color: #eee97f !important;
+ }
+
+
+  .info-corner{
+    background-color: white !important;
+    width: 4.0em;
+    float:left;
+    border-width: 2px;
+    border-color: #268EC4 !important;
+    opacity: 0.2;
+    height: 4.0em;
+    outline:none !important;
+    /*-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);*/
+  }
 
  .glyphicon-info-sign{
    font-size: 2.0em;
@@ -252,7 +284,14 @@ a {
 }
 
  .infoname{
-   color: #72860F !important;
+   margin-top: 10px !important;
+   cursor: pointer;
+   cursor: hand;
+   transition: all ease-in-out 1s;
+ }
+
+ .infoname:hover{
+   color: #268EC4 !important;
  }
 
  .infotext{
