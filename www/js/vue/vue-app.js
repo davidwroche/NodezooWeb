@@ -21,7 +21,7 @@ var vm1 = new Vue({
         role: 'web',
         cmd: 'sug',
         query: this.$data.query
-      }, function(err, result) {
+      }, function (err, result) {
         if (result) {
           seneca.act({
             omar: 'suggestions',
@@ -43,14 +43,14 @@ var vm1 = new Vue({
         role: 'web',
         cmd: 'query',
         query: this.$data.query
-      }, function(err, out) {
+      }, function (err, out) {
         console.log(out)
         if (out.items.length != 0) {
           seneca.act({
             ann: 'results',
             results: out.items
           });
-        }else{
+        } else {
           seneca.act({
             noel: 'no_matches_found',
             matches: self.query
@@ -92,25 +92,25 @@ var vm1 = new Vue({
       info.style.borderWidth = "2px"
       info.style.borderColor = "#268EC4";
     },
-    fadeSearch(){
+    fadeSearch() {
       var element = document.getElementById('resultssection')
-      element.style.transition="opacity 1s";
+      element.style.transition = "opacity 1s";
       element.style.opacity = "0.5"
 
     },
-    unfadeSearch(){
+    unfadeSearch() {
       var element = document.getElementById('resultssection')
-      element.style.transition="opacity 1s";
+      element.style.transition = "opacity 1s";
       element.style.opacity = "1"
     },
-    fadeInfo(){
+    fadeInfo() {
       var element = document.getElementById('inforesults')
-      element.style.transition="opacity 1s";
+      element.style.transition = "opacity 1s";
       element.style.opacity = "0.5"
     },
-    unfadeInfo(){
+    unfadeInfo() {
       var element = document.getElementById('inforesults')
-      element.style.transition="opacity 1s";
+      element.style.transition = "opacity 1s";
       element.style.opacity = "1"
     }
   }
@@ -132,12 +132,16 @@ var vm2 = new Vue({
         role: 'web',
         cmd: 'info',
         name: item
-      }, function(err, mod) {
+      }, function (err, mod) {
         if (mod) {
           seneca.act({
             ian: 'get_info',
             name: mod
           });
+          seneca.act({
+            hugh: 'module_name',
+            name: item
+          })
         }
       });
       vm1.layout1 = false;
@@ -154,13 +158,13 @@ var vm2 = new Vue({
       search.style.borderColor = "#268EC4";
     },
   },
-  beforeCreate: function() {
+  beforeCreate: function () {
     var self = this
 
     seneca
-      .add('ann:results', function(msg, reply) {
+      .add('ann:results', function (msg, reply) {
         self.results = msg.results
-        self.results.forEach(function(item) {
+        self.results.forEach(function (item) {
           if (!item.hasOwnProperty(item.giturl)) {
             item.npmurl = "http://npmjs.com/package/" + item.name.toString()
             item.namelink = item.npmurl
@@ -184,12 +188,12 @@ var vm2 = new Vue({
         })
         reply()
       })
-      .add('claire:clear_results', function(msg, reply) {
+      .add('claire:clear_results', function (msg, reply) {
         self.results = msg.results
         self.matches = false
         reply()
       })
-      .add('noel:no_matches_found', function(msg, reply) {
+      .add('noel:no_matches_found', function (msg, reply) {
         self.nomatch = msg.matches
         self.matches = true
         reply()
@@ -206,14 +210,14 @@ var vm3 = new Vue({
     suggest: '',
     layout3: true
   },
-  beforeCreate: function() {
+  beforeCreate: function () {
     var self = this;
     seneca
-      .add('omar:suggestions', function(msg, reply) {
+      .add('omar:suggestions', function (msg, reply) {
         self.suggest = msg.suggestions
         var list = document.getElementById('suggestlist');
         document.getElementById('suggestlist').innerHTML = '';
-        self.suggest.forEach(function(item) {
+        self.suggest.forEach(function (item) {
           var option = document.createElement('option');
           option.value = item;
           list.appendChild(option);
@@ -234,7 +238,7 @@ var vm4 = new Vue({
     information: '',
     layout4: false,
     error: false,
-    nomatch:''
+    nomatch: ''
   },
   methods: {
     getInfo() {
@@ -242,7 +246,7 @@ var vm4 = new Vue({
         role: 'web',
         cmd: 'info',
         name: this.$data.name
-      }, function(err, mod) {
+      }, function (err, mod) {
         if (mod) {
           seneca.act({
             ian: 'get_info',
@@ -252,32 +256,40 @@ var vm4 = new Vue({
       });
     },
   },
-  beforeCreate: function() {
+  beforeCreate: function () {
     var self = this;
     seneca
-      .add('ian:get_info', function(msg, reply) {
-        console.log(msg)
-        if(msg.name.no_github == true && msg.name.no_npm == false){
-          if(Object.keys(msg.name.npm).length == 3){
+      .add('ian:get_info', function (msg, reply) {
+        if (msg.name.no_github == true && msg.name.no_npm == false) {
+          if (Object.keys(msg.name.npm).length == 3) {
+            console.log(msg)
             self.npm = ''
             self.github = ''
             self.error = true
             self.nomatch = msg.name.npm.id
-          }else{
+          } else {
+            console.log(msg)
             self.error = false
             self.github = msg.name.github
             self.npm = msg.name.npm
           }
-        }else if(msg.name.no_github == true && msg.name.no_npm == true){
+        } else if (msg.name.no_github == true && msg.name.no_npm == true) {
+          console.log(msg)
           self.npm = ''
-          self.nomatch = ''
+          self.nomatch = self.name
           self.error = true
           self.github = ''
-        }else{
+        } else {
+          console.log(msg)
           self.error = false
           self.github = msg.name.github
           self.npm = msg.name.npm
         }
+        reply()
+      })
+      .add('hugh:module_name', function (msg, reply) {
+        self.nomatch = msg.name
+        self.name = msg.name
         reply()
       })
   }
