@@ -30,7 +30,7 @@ module.exports = function init_hapi(options) {
     path: '/{path*}',
     handler: {
       directory: {
-        path: folder + "/www/",
+        path: folder + "/www/VueWebpack",
       }
     }
   })
@@ -38,7 +38,7 @@ module.exports = function init_hapi(options) {
 
   server.views({
     engines: { html: handlebars },
-    path: folder + '/www',
+    path: folder + '/www/VueWebpack',
     layout: true
   })
 
