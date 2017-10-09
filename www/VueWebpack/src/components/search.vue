@@ -93,34 +93,6 @@
                     results: ''
                 })
             },
-            infoLayout() {
-                this.layout1 = false;
-                // vm2.$data.layout2 = false;
-                // vm3.$data.layout3 = false;
-                // vm4.$data.layout4 = true;
-                // var info = document.getElementById('infoButton')
-                // var search = document.getElementById('searchButton')
-                // info.style.opacity = "1"
-                // info.style.borderWidth = "3px"
-                // info.style.borderColor = "#FFFF00 !important";
-                // search.style.opacity = "0.2"
-                // search.style.borderWidth = "2px"
-                // search.style.borderColor = "#268EC4";
-            },
-            searchLayout() {
-                this.layout1 = true;
-                // vm2.$data.layout2 = true;
-                // vm3.$data.layout3 = true;
-                // vm4.$data.layout4 = false;
-                // var info = document.getElementById('infoButton')
-                // var search = document.getElementById('searchButton')
-                // search.style.opacity = "1"
-                // search.style.borderWidth = "3px"
-                // search.style.borderColor = "#FFFF00 !important";
-                // info.style.opacity = "0.2"
-                // info.style.borderWidth = "2px"
-                // info.style.borderColor = "#268EC4";
-            },
             fadeSearch() {
                 var element = document.getElementById('resultssection')
                 element.style.transition = "opacity 1s";

@@ -14,7 +14,6 @@ seneca = Seneca()
 
 const router =  new Router({
     routes,
-    mode: 'history'
 });
 
 Vue.use(Router)

@@ -5,7 +5,7 @@ import Info from '.././components/info.vue';
 
 
 export const routes = [
-    { path: '/search', component: Search },
+    { path: '/', component: Search },
     { path: '/result', component: Result },
     { path: '/suggest', component: Suggest },
     { path: '/info', component: Info },

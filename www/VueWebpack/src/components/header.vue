@@ -11,8 +11,8 @@
         <div class="row">
             <div id="logo" class="text-center">
                 <a href="http://github.com/nodezoo/tao" class="logo"><img src=".././assets/images/nodezoo.png"></a>
-                <p v-if="layout1">Search for <a href="http://nodejs.org">Node.js</a> modules.</p>
-                <p v-else="layout1" v-cloak>Manually inject entries using the info service</p>
+                <p v-if="search">Search for <a href="http://nodejs.org">Node.js</a> modules.</p>
+                <p v-else="search" v-cloak>Manually inject entries using the info service</p>
             </div>
         </div>
     </div>
@@ -22,14 +22,36 @@
 <script>
     export default {
 
+      data(){
+        return{
+          search:true
+        }
+      },
+
       methods:{
         infoLayout() {
-          console.log('info')
+          var info = document.getElementById('infoButton')
+          var search = document.getElementById('searchButton')
+          info.style.opacity = "1"
+          info.style.borderWidth = "3px"
+          info.style.borderColor = "#FFFF00 !important";
+          search.style.opacity = "0.2"
+          search.style.borderWidth = "2px"
+          search.style.borderColor = "#268EC4";
+          this.search = false
           this.$router.push('/info')
         },
         searchLayout() {
-          console.log('search')
-          this.$router.push('/search')
+          var info = document.getElementById('infoButton')
+          var search = document.getElementById('searchButton')
+          search.style.opacity = "1"
+          search.style.borderWidth = "3px"
+          search.style.borderColor = "#FFFF00 !important";
+          info.style.opacity = "0.2"
+          info.style.borderWidth = "2px"
+          info.style.borderColor = "#268EC4";
+          this.search = true;
+          this.$router.push('/')
         },
       }
 

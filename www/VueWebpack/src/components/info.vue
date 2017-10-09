@@ -27,18 +27,18 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-xs-6 text-left">
-                    <img src="images/github-small.png">
+                    <img src="/src/assets/images/github-small.png">
                     <h3 class="infoname">{{ github.owner }}</h3>
                   </div>
                   <div class="col-xs-6 text-right">
                     <div class="col-xs-4 text-left">
-                      <span class="infotext"><img src="images/star.png">{{github.stars}}</span>
+                      <span class="infotext"><img src="/src/assets/images/star.png">{{github.stars}}</span>
                     </div>
                     <div class="col-xs-4 text-center">
-                      <span class="infotext"><img src="images/watch.png">{{github.watches}}</span>
+                      <span class="infotext"><img src="/src/assets/images/watch.png">{{github.watches}}</span>
                     </div>
                     <div class="col-xs-4 text-right">
-                      <span class="infotext"><img src="images/fork.png">{{github.forks}}</span>
+                      <span class="infotext"><img src="/src/assets/images/fork.png">{{github.forks}}</span>
                     </div>
                   </div>
                 </div>
@@ -51,7 +51,7 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-xs-6 text-left">
-                    <img src="images/npm-small.png">
+                    <img src="/src/assets/images/npm-small.png">
                     <h3 class="infoname">{{ npm.name }}</h3>
                   </div>
                   <div class="col-xs-6 text-center">

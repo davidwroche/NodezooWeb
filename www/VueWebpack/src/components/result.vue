@@ -14,8 +14,8 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-6 text-left">
-                                            <a :href="item.npmurl" class="logo"><img src="images/npm-small.png"></a>
-                                            <a :href="item.giturl" class="logo"><img src="images/github-small.png"></a>
+                                            <a :href="item.npmurl" class="logo"><img src="/src/assets/images/npm-small.png"></a>
+                                            <a :href="item.giturl" class="logo"><img src="/src/assets/images/github-small.png"></a>
                                             <a :href="item.namelink"><h3 class="infoname">{{ item.name }}</h3></a>
                                         </div>
                                         <div class="col-xs-6 text-right">
@@ -78,10 +78,7 @@
                         })
                     }
                 });
-                vm1.layout1 = false;
-                this.$data.layout2 = false;
-                vm3.$data.layout3 = false;
-                vm4.$data.layout4 = true;
+                this.$router.push('/info')
                 var info = document.getElementById('infoButton')
                 var search = document.getElementById('searchButton')
                 info.style.opacity = "1"
