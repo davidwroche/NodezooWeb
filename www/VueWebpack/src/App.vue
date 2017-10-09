@@ -1,19 +1,29 @@
 <template>
     <div class="container overlord">
     <div class="row">
+      <headersection></headersection>
             <div class="header">
-                <searchsection></searchsection>
+                <router-view>
+                </router-view>
             </div>
+            <footersection></footersection>
         </div>
     </div>
 </template>
 
 <script>
     import Search from './components/search.vue';
+    import Footer from './components/footer.vue';
+    import Header from './components/header.vue';
 
     export default {
         components: {
             searchsection: Search,
+            footersection: Footer,
+            headersection: Header,
+        },
+        beforeCreate() {
+          this.$router.push('/search')
         }
     }
 
